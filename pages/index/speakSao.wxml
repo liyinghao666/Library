@@ -1,0 +1,29 @@
+<!--speakSao.wxml-->
+<view class="speakSao">
+  <view class="top">树洞</view>
+  <view class="speak">
+    <view class="scroll">
+      <view class="word">
+        <image class="pic"/>
+        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
+      </view>
+      <view class="word">
+        <image class="pic"/>
+        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
+      </view>
+      <view class="word">
+        <image class="pic"/>
+        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
+      </view>
+      <view class="word">
+        <image class="pic"/>
+        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
+      </view>
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="space"></view>
+    <input type="text" placeholder="说上两句悄悄话吧！"></input>
+    <button class="submit">发送</button>
+  </view>
+</view>

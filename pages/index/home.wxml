@@ -1,0 +1,13 @@
+<!--home.wxml-->
+<view class="home">
+  <view class="wrapper">
+    <view class="row">    
+      <button bindtap="toBorrow">我要借书</button>
+      <button bindtap="toRepay">我要还书</button>
+    </view>
+    <view class="row">
+      <button bindtap="toHistory">借阅记录</button>
+      <button bindtap="speakSao">树洞</button>
+    </view>
+  </view>
+</view>

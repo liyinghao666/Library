@@ -1,0 +1,8 @@
+<!--borrow.wxml-->
+<view class="borrow">
+
+
+  <view class="book" wx:for="{{bookList}}" wx:key="{{item.id}}">
+    {{item.name}}:{{item.user?item.user:'空闲'}}
+  </view>
+</view>

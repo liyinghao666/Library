@@ -1,0 +1,79 @@
+/* pages/index/speakSao.wxss */
+view {
+  box-sizing: border-box;
+}
+.speakSao {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.top {
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #212121;
+  color: #FFFFFF;
+}
+.speak {
+  width: 100%;
+  flex: 1 1;
+  background-color: #BDBDBD;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: scroll;
+}
+.speak .scroll {
+  width: 100%;
+}
+.speak .scroll .word {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  border-bottom: #212121 5rpx solid;
+}
+.speak .scroll .word .pic {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx;
+  background-color: #FFFFFF;
+}
+.speak .scroll .word .words {
+  flex: 1;
+}
+.bottom {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  background-color: #212121;
+}
+.bottom input {
+  box-sizing: border-box;
+  padding: 10rpx;
+  line-height: 70rpx;
+  font-size: 50rpx;
+  height: 80rpx;
+  width: 65%;
+  background-color: #BDBDBD;
+}
+.bottom button {
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 70rpx;
+  font-size: 50rpx;
+  width: 20%;
+  background-color: #FFFFFF;
+}
+.space {
+  width: 5%;
+}

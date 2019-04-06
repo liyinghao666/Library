@@ -42,6 +42,9 @@ Page({
         }
       })
     }
+    wx.navigateTo({
+      url: './home'
+    })
   },
   getUserInfo: function(e) {
     console.log(e)

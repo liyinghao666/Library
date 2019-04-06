@@ -1,0 +1,29 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.wrapper {
+  width: 600rpx;
+  height: 600rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 600rpx;
+}
+.row  button {
+  width: 250rpx;
+  height: 250rpx;
+  border: 4rpx black solid;
+  box-shadow: black 0 0 5rpx 2rpx;
+}

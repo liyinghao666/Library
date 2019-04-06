@@ -1,6 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/index/home",
+    "pages/index/borrow",
+    "pages/index/repay",
+    "pages/index/history",
+    "pages/index/speakSao",
     "pages/logs/logs"
   ],
   "window":{
