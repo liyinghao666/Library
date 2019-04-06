@@ -63,7 +63,8 @@ view {
   line-height: 70rpx;
   font-size: 50rpx;
   height: 80rpx;
-  width: 65%;
+  flex: 1;
+  margin: 0 10rpx;
   background-color: #BDBDBD;
 }
 .bottom button {
@@ -71,7 +72,8 @@ view {
   height: 80rpx;
   line-height: 70rpx;
   font-size: 50rpx;
-  width: 20%;
+  width: 180rpx;
+  margin: 10rpx;
   background-color: #FFFFFF;
 }
 .space {

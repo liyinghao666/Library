@@ -22,7 +22,6 @@
     </view>
   </view>
   <view class="bottom">
-    <view class="space"></view>
     <input type="text" placeholder="说上两句悄悄话吧！"></input>
     <button class="submit">发送</button>
   </view>

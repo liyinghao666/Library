@@ -1,8 +1,17 @@
 <!--borrow.wxml-->
 <view class="borrow">
-
-
-  <view class="book" wx:for="{{bookList}}" wx:key="{{item.id}}">
-    {{item.name}}:{{item.user?item.user:'空闲'}}
+  <view class="search">
+    <input class="input" placeholder="搜你想借的"/>
+    <image src="./assets/search.svg" alt=""></image>
+  </view>
+  <view class="books">
+    <view class="book" wx:for="{{bookList}}" wx:key="{{item.id}}">
+      <image class="bookImg" src="./assets/book.svg"/>
+      <view class="intro">
+        <text class="name">{{item.name}}</text>
+        <text class="user">{{item.user?item.user:'空闲'}}</text>
+      </view>
+      <button class="{{item.user?'ban':'allow'}}">{{item.user?'不可借':'我想借'}}</button>
+    </view>
   </view>
 </view>
