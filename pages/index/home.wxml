@@ -1,5 +1,6 @@
 <!--home.wxml-->
 <view class="home">
+  <image src="./assets/home.jpg" />
   <view class="wrapper">
     <view class="row">    
       <button bindtap="toBorrow">我要借书</button>

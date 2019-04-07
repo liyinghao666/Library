@@ -1,0 +1,15 @@
+<!--repay.wxml-->
+<view class="repay">
+  <view class="userinfo">
+    <image class="head" src="{{userinfo.head}}"/>
+    <text class="message">{{userinfo.message}}</text>
+  </view>
+  <view class="borrows">
+    <text class="my">正在阅读</text>
+    <view wx:for="{{borrows}}" wx:key="{{index}}" class="book">
+      <image src="./assets/book.svg" />
+      <text>{{item.name}}</text>
+      <button class="back">退还</button>
+    </view>
+  </view>
+</view>

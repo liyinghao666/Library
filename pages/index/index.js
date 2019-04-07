@@ -4,18 +4,34 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '点击进入系统',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
+    wx.login({
+      success: (res) => {
+        console.log(res);
+        wx.request({
+          url: '',
+          data: '',
+          success: (res) => {
+            if (res.allow) {
+              wx.navigateTo({
+                url: './home'
+              })
+            }
+            else {
+              wx.navigateTo({
+                url: './load'
+              })
+            }
+          }
+        })
+      }
+    });
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -45,6 +61,7 @@ Page({
     wx.navigateTo({
       url: './home'
     })
+
   },
   getUserInfo: function(e) {
     console.log(e)

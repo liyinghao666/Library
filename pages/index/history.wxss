@@ -1,1 +1,65 @@
 /* pages/index/history.wxss */
+.view {
+  box-sizing: border-box;
+}
+.history {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.history .userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex: 0.3;
+  background-color: #FF5722;
+}
+.history .userinfo .head {
+  height: 200rpx;
+  width: 200rpx;
+}
+.history .userinfo .message {
+  color: beige;
+}
+.history .borrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  flex: 0.7;
+  background-color: #FFFFFF;
+  overflow: scroll;
+}
+.history .borrows .book {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10rpx 0;
+  min-height: 250rpx;
+}
+.history .borrows .book image {
+  width: 150rpx;
+}
+.history .borrows .book > text {
+  max-width: 6rem;
+  line-break: normal;
+}
+.history .borrows .book .timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1
+}

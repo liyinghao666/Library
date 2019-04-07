@@ -1,0 +1,17 @@
+<!--history.wxml-->
+<view class="history">
+  <view class="userinfo">
+    <image class="head" src="{{userinfo.head}}"/>
+    <text class="message">{{userinfo.message}}</text>
+  </view>
+  <view class="borrows">
+    <view wx:for="{{borrows}}" wx:key="{{index}}" class="book">
+      <image src="./assets/book.svg" />
+      <text>{{item.name}}</text>
+      <view class="timeline">
+        <text>借出时间:{{item.start}}</text>
+        <text>归还时间:{{item.end}}</text>
+      </view>
+    </view>
+  </view>
+</view>

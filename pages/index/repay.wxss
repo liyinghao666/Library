@@ -1,1 +1,67 @@
 /* pages/index/repay.wxss */
+.view {
+  box-sizing: border-box;
+}
+.repay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.repay .userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex: 0.3;
+  background-color: #03A9F4;
+}
+.repay .userinfo .head {
+  height: 200rpx;
+  width: 200rpx;
+}
+.repay .userinfo .message {
+  color: beige;
+}
+.repay .borrows {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 0.7;
+  background-color: #FFFFFF;
+}
+.repay .borrows .my {
+  position: absolute;
+  left: 10rpx;
+  top: 30%;
+  font-size: 20px;
+}
+.repay .borrows .book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0.5;
+  height: 100%;
+}
+.repay .borrows .book image {
+  width: 250rpx;
+  height: 400rpx;
+  flex: 0.5
+}
+.repay .borrows .book text {
+  flex: 0.2
+}
+.repay .borrows .book button {
+  flex: 0.3;
+  max-height: 100rpx;
+}

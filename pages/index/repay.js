@@ -1,6 +1,18 @@
 Page({
   data: {
-
+    userinfo: {
+      head: './assets/head.svg',
+      message: '自动化校际交流李英豪'
+    },
+    borrows: [
+      {
+        name: '少林英雄传',
+        id: 1
+      },      {
+        name: '少林英雄传',
+        id: 1
+      }
+    ]
   },
   onLoad: function() {
     console.log('home loaded')

@@ -6,6 +6,7 @@
     "pages/index/repay",
     "pages/index/history",
     "pages/index/speakSao",
+    "pages/index/load",
     "pages/logs/logs"
   ],
   "window":{

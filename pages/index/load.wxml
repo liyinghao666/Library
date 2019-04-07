@@ -1,0 +1,22 @@
+<!--history.wxml-->
+<view class="load">
+  <form class="usermessage">
+    <text class="info">此系统仅供华中科技大学管理学院内部学习使用，请先验明身份</text>
+    <view class="line"></view>
+    <text class="id">学号</text>
+    <input class="id" bindinput="idInput"/>
+    <view class="line"></view>
+    <text class="class">班级</text>
+    <input class="class" bindinput="classInput"/>
+    <view class="line"></view>
+    <text class="name">姓名</text>
+    <input class="name" bindinput="nameInput"/>
+    <view class="line"></view>
+    <text class="tel">联系方式(请标注qq或其他方式)</text>
+    <input class="tel" bindinput="telInput"/>
+    <view class="line"></view>
+    <button class="btn" type="primary" loading="{{loading}}"  bindtap="onSubmit">
+      提交
+    </button>
+  </form>
+</view>
