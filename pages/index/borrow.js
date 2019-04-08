@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
   data: {
     kind: null,
@@ -36,7 +37,16 @@ Page({
     ]
   },
   onLoad: function() {
-
+    wx.request({
+      url: app.globalData.baseUrl + 'v1/books',
+      header: {
+        Authorization: app.globalData.access_token
+      },
+      method:'get',
+      success: (res) => {
+        console.log(res)
+      }
+    })
     console.log('home loaded')
   },
   // 函数们

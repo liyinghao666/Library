@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+app.globalData.baseUrl = 'https://guanli.hustonline.net/';
 
 Page({
   data: {
@@ -13,12 +14,20 @@ Page({
   onLoad: function () {
     wx.login({
       success: (res) => {
-        console.log(res);
         wx.request({
-          url: '',
-          data: '',
+          url: app.globalData.baseUrl + 'v1/auth',
+          method: 'POST',
+          data: {
+            code: res.code,
+          },
           success: (res) => {
-            if (res.allow) {
+            let data = res.data;
+            console.log(data)
+            if (!data.errorType) {
+              app.globalData.refresh_token = data.token.refresh_token;
+              app.globalData.access_token = data.token.access_token;
+              app.globalData.user = data.user;
+              console.log(app.globalData.refresh_token,app.globalData.access_token, app.globalData.user);
               wx.navigateTo({
                 url: './home'
               })
