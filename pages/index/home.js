@@ -3,7 +3,6 @@ Page({
 
   },
   onLoad: function() {
-    console.log('home loaded')
   },
   // 函数们
   toBorrow: function() {

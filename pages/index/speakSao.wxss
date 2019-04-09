@@ -1,6 +1,11 @@
 /* pages/index/speakSao.wxss */
 view {
   box-sizing: border-box;
+  margin: 0;
+}
+text {
+  box-sizing: border-box;
+  margin: 0;
 }
 .speakSao {
   position: absolute;
@@ -23,7 +28,7 @@ view {
 .speak {
   width: 100%;
   flex: 1 1;
-  background-color: #BDBDBD;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -48,6 +53,39 @@ view {
 }
 .speak .scroll .word .words {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.speak .scroll .word .words .comment {
+  width: 100%;
+  line-break: strict;
+  border: 1rpx black solid;
+}
+.speak .scroll .word .words .replys {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.speak .scroll .word .words .replys .reply {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-sizing: border-box;
+  margin-right: 20rpx;
+  box-sizing: border-box;
+  border-top: 2rpx gray solid;
+  width: 70%;
+}
+.speak .scroll .word .words .replys .reply .id {
+  font-size: 30rpx;
+}
+.speak .scroll .word .words .replys .reply .words {
+  max-width: 100%;
+  line-break: strict;
+  font-size: 40rpx;
 }
 .bottom {
   width: 100%;

@@ -3,21 +3,17 @@
   <view class="top">树洞</view>
   <view class="speak">
     <view class="scroll">
-      <view class="word">
+      <view class="word" wx:for="{{comments}}">
         <image class="pic"/>
-        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
-      </view>
-      <view class="word">
-        <image class="pic"/>
-        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
-      </view>
-      <view class="word">
-        <image class="pic"/>
-        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
-      </view>
-      <view class="word">
-        <image class="pic"/>
-        <text class="words">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam nihil inventore doloribus beatae, dolorum reprehenderit laborum! Cumque aliquid molestias, rem similique a veritatis rerum modi iusto eum vero officiis quia?</text>
+        <view class="words">
+          <text class="comment">{{item.content}}</text>
+          <view class="replys">
+            <view class="reply" wx:for="{{item.replies}}">
+              <text class="words">{{item.replyContent}}</text>
+              <text class="id">李英豪</text>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>

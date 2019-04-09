@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
   data: {
     id: null,
@@ -29,16 +31,33 @@ Page({
   onSubmit: function () {
     if (!(this.data.id && this.data.name && this.data.class && this.data.tel)){
       wx.showToast({title: '信息不全！'});
-      setTimeout(() => {
-        wx.hideToast();
-      }, 1000);
       return;
     }
     this.setData({loading:true});
-    console.log(this.data)
-    setTimeout(() => {
-      this.setData({loading:false})
-    }, 1000);
+    wx.request({
+      url: app.globalData.baseUrl + 'v1/users',
+      header: {
+        Authorization: app.globalData.access_token
+      },
+      method: 'POST',
+      data: {
+        openid: app.globalData.user.openId,
+        name: this.data.name,
+        studentId: this.data.id,
+        class: this.data.class,
+        qq: this.data.tel
+      },
+      success: (res) => {
+        console.log(res);
+        this.setData({loading:false})
+        if (res.data.error_type === 'not_management_student') {
+          wx.showToast({title: '非管理学院学员'});
+          setTimeout(() => {
+            wx.hideToast();
+          }, 1000);
+        }
 
+      }
+    })
   }
 })

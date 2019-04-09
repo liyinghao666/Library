@@ -52,6 +52,8 @@ view {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
+  margin: 10rpx;
 }
 .borrow .books .book .bookImg {
   width: 200rpx;

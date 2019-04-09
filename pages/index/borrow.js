@@ -1,53 +1,41 @@
 const app = getApp();
+const request = require('./request.js');
 Page({
   data: {
     kind: null,
     kindList: [],
-    bookList: [
-      {
-        name: '少林英雄传',
-        user: '管卓江诗毅',
-        id:1
-      },
-      {
-        name: 'lie to me',
-        user: '会计刘选怡',
-        id:2
-      },
-      {
-        name: '杀死一只知更鸟',
-        user: '',
-        id: 3
-      },
-      {
-        name: '少林英雄传',
-        user: '管卓江诗毅',
-        id:1
-      },
-      {
-        name: 'lie to me',
-        user: '会计刘选怡',
-        id:2
-      },
-      {
-        name: '杀死一只知更鸟',
-        user: '',
-        id: 3
-      }
-    ]
+    bookList: []
   },
   onLoad: function() {
-    wx.request({
-      url: app.globalData.baseUrl + 'v1/books',
-      header: {
-        Authorization: app.globalData.access_token
-      },
-      method:'get',
-      success: (res) => {
-        console.log(res)
-      }
-    })
-    console.log('home loaded')
+    request('v1/books','GET',null,(res) => {
+      console.log(res.data)
+      this.setData({
+        bookList: res.data,
+      })
+    });
   },
+  handleTap: function(e) {
+    let index = parseInt(e.target.id)
+    request('/v1/books/' + this.data.bookList[index]._id ,'PUT',{
+      id: this.data.bookList[index]._id,
+      bookState: '匿名',
+      currentOwner: "000000000000000000002000",
+      readRank: this.data.bookList[index].readRank + 1
+    },(res) => {
+      console.log(res);
+      request('v1/books','GET',null,(res) => {
+        this.setData({
+          bookList: res.data,
+        })
+      });  
+    },false)
+  }
   // 函数们
+  // "_id": "5cac6909f8f68c000140b463",
+  // "bookNumber": "1",
+  // "bookName": "少林英雄传",
+  // "author": "江诗毅",
+  // "bookState": "空闲",
+  // "currentOwner": "000000000000000000000000",
+  // "readRank": 0
 })

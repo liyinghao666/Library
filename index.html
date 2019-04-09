@@ -11,14 +11,114 @@
       margin: 0;
       box-sizing: border-box;
       font-size: 16px;
+      text-align: center;
+    }
+    #load,#home,#users,#books {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #home,#users,#books{
+      display: none;
+    }
+    #load {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #load input{
+      margin: 10px 10px;
+      height: 2rem;
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    #load button {
+      height: 2rem;
+      line-height: 2rem;
+      width: 5rem;
     }
   </style>
 </head>
 <body>
-  
+  <div id="load">
+    <input type="text" placeholder="管理员账号" onchange="handleUsername">
+    <input type="text" placeholder="管理员密码" onchange="handlePassword">
+    <button onclick="handleLoad()">登陆</button>
+  </div>
+  <div id="home">
+    <div onclick="handleUsers()">人员列表</div>
+    <div onclick="handleBooks()">书籍列表</div>
+    <div onclick="clearBooks()">还原所有书籍</div>
+  </div>
+  <div id="users">
+    <div>
+      <span onclick="handleHome()">返回</span>
+      <input type="text" placeholder="搜索用户名">
+      <button onclick="searchUser()"></button>
+    </div>
+    <div id="alluser">
+      <div class="user">
+        <span>username</span>
+        <span>classname</span>
+        <span>hisbook</span>
+      </div>
+    </div>
+  </div>
+  <div id="books">
+      <div>
+        <span onclick="handleHome()">返回</span>
+        <input type="text" placeholder="搜索书名">
+        <button onclick="searchBook()"></button>
+      </div>    
+    <div id="allbook">
+      <div class="book">
+        <span>bookname</span>
+        <span>author</span>
+        <span>user</span>
+      </div>
+    </div>
+  </div>
 
   <script>
-      
+    const load = document.querySelector('#load');
+    const home = document.querySelector('#home');
+    const books = document.querySelector('#books');
+    const users = document.querySelector('#users');
+    const data = {
+      books:[],
+      users:[],
+    }
+    function handleLoad() {
+      /***/
+      handleHome();
+    }
+    function handleHome() {
+      load.style.display = 'none';
+      home.style.display = 'flex';
+      books.style.display = 'none';
+      users.style.display = 'none';
+    }
+    function handleUsers() {
+      load.style.display = 'none';
+      home.style.display = 'none';
+      books.style.display = 'none';
+      users.style.display = 'flex';
+    }
+    function handleBooks() {
+      load.style.display = 'none';
+      home.style.display = 'none';
+      books.style.display = 'flex';
+      users.style.display = 'none';
+    }
+    function clearBooks() {
+      if(window.confirm('将所有书籍还原为空闲状态？')) {
+        /*....*/
+      }
+    }
   </script>
 </body>
 </html>
