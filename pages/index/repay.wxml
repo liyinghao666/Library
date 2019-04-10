@@ -1,7 +1,7 @@
 <!--repay.wxml-->
 <view class="repay">
   <view class="userinfo">
-    <image class="head" src="{{userinfo.head}}"/>
+    <image class="head" src="{{head}}"/>
     <text class="message">{{userinfo.message}}</text>
   </view>
   <view class="borrows">

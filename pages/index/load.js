@@ -41,7 +41,7 @@ Page({
       },
       method: 'POST',
       data: {
-        openid: app.globalData.user.openId,
+        openid: 'cxknmsl',//app.globalData.user.openId,
         name: this.data.name,
         studentId: this.data.id,
         class: this.data.class,
@@ -55,6 +55,15 @@ Page({
           setTimeout(() => {
             wx.hideToast();
           }, 1000);
+        } else {
+          console.log(res)
+          let data = res.data;
+          app.globalData.user = data.user;
+          app.globalData.refresh_token = data.token.refresh_token;
+          app.globalData.access_token = data.token.access_token;
+          wx.navigateTo({
+            url: './home'
+          })  
         }
 
       }

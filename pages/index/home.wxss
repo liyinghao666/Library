@@ -16,8 +16,10 @@
 }
 .wrapper {
   width: 600rpx;
-  height: 600rpx;
+  height: 400rpx;
   display: flex;
+  align-self: flex-start;
+  margin-top: 50rpx;
   flex-direction: column;
   justify-content: space-between;
   z-index: 2;
@@ -30,7 +32,9 @@
 }
 .row  button {
   width: 250rpx;
-  height: 250rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
   border: 4rpx black solid;
   box-shadow: black 0 0 5rpx 2rpx;
   background-color: rgba(0, 0, 0, 0);

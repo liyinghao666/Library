@@ -22,7 +22,7 @@ text {
   height: 100rpx;
   text-align: center;
   line-height: 100rpx;
-  background-color: #212121;
+  background-color: #61b8e0;
   color: #FFFFFF;
 }
 .speak {
@@ -44,6 +44,12 @@ text {
   align-items: flex-start;
   justify-content: space-evenly;
   border-bottom: #212121 5rpx solid;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier();
+}
+.speak .scroll .touch {
+  background: rgba(106, 243, 190, 0.5);
+  transition-duration: 200ms;
 }
 .speak .scroll .word .pic {
   width: 120rpx;
@@ -60,7 +66,7 @@ text {
 .speak .scroll .word .words .comment {
   width: 100%;
   line-break: strict;
-  border: 1rpx black solid;
+  font-size: 40rpx;
 }
 .speak .scroll .word .words .replys {
   margin-top: 20rpx;
@@ -80,12 +86,12 @@ text {
   width: 70%;
 }
 .speak .scroll .word .words .replys .reply .id {
-  font-size: 30rpx;
+  font-size: 25rpx;
 }
 .speak .scroll .word .words .replys .reply .words {
   max-width: 100%;
   line-break: strict;
-  font-size: 40rpx;
+  font-size: 30rpx;
 }
 .bottom {
   width: 100%;
@@ -93,7 +99,7 @@ text {
   display: flex;
   flex-direction: row;
   align-items:center;
-  background-color: #212121;
+  background-color: #61b8e0;
 }
 .bottom input {
   box-sizing: border-box;
@@ -103,7 +109,7 @@ text {
   height: 80rpx;
   flex: 1;
   margin: 0 10rpx;
-  background-color: #BDBDBD;
+  background-color: #ffffff;
 }
 .bottom button {
   box-sizing: border-box;

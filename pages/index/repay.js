@@ -1,5 +1,6 @@
 Page({
   data: {
+    head: null,
     userinfo: {
       head: './assets/head.svg',
       message: '自动化校际交流李英豪'
@@ -12,7 +13,9 @@ Page({
     ]
   },
   onLoad: function() {
-    console.log('home loaded')
+    this.setData({
+      head: app.globalData.userInfo.avatarUrl
+    })
   },
   // 函数们
   toBorrow: function() {

@@ -15,10 +15,18 @@ Page({
     });
   },
   handleTap: function(e) {
-    let index = parseInt(e.target.id)
+    let index = parseInt(e.target.id);
+    // if (this.data.bookList[index].bookState === '空闲') {
+    //   wx.showModal({
+    //     title: '此书已被',
+    //     content: '联系方式'
+    //   })
+    //   console.log('不可借')
+    //   return;
+    // }
     request('/v1/books/' + this.data.bookList[index]._id ,'PUT',{
       id: this.data.bookList[index]._id,
-      bookState: '匿名',
+      bookState: '在读',
       currentOwner: "000000000000000000002000",
       readRank: this.data.bookList[index].readRank + 1
     },(res) => {
