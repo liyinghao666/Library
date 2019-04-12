@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 app.globalData.baseUrl = 'https://guanli.hustonline.net/';
+app.globalData._id = '5cae1445c3a8990001202d86';
 const request = require('./request.js');
 let next = null;
 Page({
@@ -52,16 +53,12 @@ Page({
     wx.login({
       success: (res) => {
         request('v1/auth','POST',{code:res.code},(res) => {
+          console.log(res)
           let data = res.data;
           app.globalData.user = data.user;
           app.globalData.openId = data.openId;
           if (!data.errorType) {
-              if (!data.user.name) {
-
-
-                /***only for test */
-                app.globalData.refresh_token = data.token.refresh_token;
-                app.globalData.access_token = data.token.access_token;  
+              if (!data.user) {
                 next = './load'
                 return;
               }
@@ -81,6 +78,7 @@ Page({
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo;
+    console.log(e)
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,

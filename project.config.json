@@ -6,15 +6,15 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
-		"postcss": false,
-		"minified": false,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true,
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.2",
-	"appid": "wx1dc584ed1faf45bc",
-	"projectname": "%E5%85%94%E5%AD%90%E7%9A%84%E7%99%BE%E5%AE%9D%E7%AE%B1",
+	"appid": "wx82e34f71951bf449",
+	"projectname": "%E4%B8%80%E4%BA%BA%E4%B8%80%E5%A5%BD%E4%B9%A6",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

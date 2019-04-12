@@ -1,21 +1,42 @@
+const app = getApp();
+const request = require('./request.js');
 Page({
   data: {
-    head: null,
-    userinfo: {
+    user: null,
+    userInfo: {
       head: './assets/head.svg',
       message: '自动化校际交流李英豪'
     },
-    borrows: [
-      {
-        name: '少林英雄传',
-        id: 1
-      }
-    ]
+    borrows: null
   },
   onLoad: function() {
     this.setData({
-      head: app.globalData.userInfo.avatarUrl
+      user: app.globalData.user,
+      userInfo: app.globalData.userInfo,
+      borrows: app.globalData.currentBook
     })
+  },
+  back: function() {
+    request('v1/books/'+ app.globalData.currentBook._id,'PUT',{
+      id: this.data.borrows._id,
+      currentOwner: '000000000000000000000000',
+      bookState: '空闲'
+    }, (res) => {
+      if(res.statusCode !== 200){return}
+      request('v1/users/'+app.globalData.user._id,'PUT',{
+        id: app.globalData.user._id,
+        bookId: this.data.borrows._id,
+        type: '还'
+      },(res) => {
+        app.globalData.currentBook = null;
+        console.log(res)
+        wx.showToast({
+          title: '还书成功'
+        })
+        app.globalData.user = res.data;
+        this.onLoad();
+      })
+    },true)
   },
   // 函数们
   toBorrow: function() {

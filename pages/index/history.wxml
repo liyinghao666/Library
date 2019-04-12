@@ -1,13 +1,13 @@
 <!--history.wxml-->
 <view class="history">
   <view class="userinfo">
-    <image class="head" src="{{userinfo.head}}"/>
-    <text class="message">{{userinfo.name}}</text>
+    <image class="head" src="{{userinfo.avatarUrl}}"/>
+    <text class="message">{{user.name}}</text>
   </view>
   <view class="borrows">
     <view wx:for="{{borrows}}" wx:key="{{index}}" class="book">
       <image src="./assets/book.svg" />
-      <text>{{item.bookId}}</text>
+      <text>{{borrows.bookId}}</text>
       <view class="timeline">
         <text>借出时间:{{item.borrowTime}}</text>
         <text>归还时间:{{item.lendTime}}</text>

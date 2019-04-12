@@ -7,7 +7,11 @@
     <input class="id" bindinput="idInput"/>
     <view class="line"></view>
     <text class="class">班级</text>
-    <input class="class" bindinput="classInput"/>
+    <picker mode="selector" range="{{itemList}}" bindchange="classInput" value="{{index}}">
+      <view class="picker">
+        ：{{itemList[index]}}
+      </view>
+    </picker>
     <view class="line"></view>
     <text class="name">姓名</text>
     <input class="name" bindinput="nameInput"/>

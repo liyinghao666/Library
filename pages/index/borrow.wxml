@@ -1,8 +1,8 @@
 <!--borrow.wxml-->
 <view class="borrow">
   <view class="search">
-    <input class="input" placeholder="搜你想借的"/>
-    <image src="./assets/search.svg" alt=""></image>
+    <input class="input" placeholder="搜你想借的" bindinput="handleInput"/>
+    <image src="./assets/search.svg" alt="" bindtap="handleSearch"></image>
   </view>
   <view class="books">
     <view class="book" wx:for="{{bookList}}" wx:key="{{item.id}}">

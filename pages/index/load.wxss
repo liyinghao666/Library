@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: center;
 }
-.usermessage input {
+.usermessage input,.usermessage picker {
   width: 100%;
   height: 80rpx;
   box-sizing: border-box;

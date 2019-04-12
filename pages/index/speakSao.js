@@ -2,74 +2,25 @@ const request = require('./request.js');
 const app = getApp();
 Page({
   data: {
+    user: null,
+    scroll: 0,
+    offset: 0,
+    limit: 5,
     words: null,
     touched: false,
     currentCommentIndex: null,
-    comments: [
-      {
-        _id: {},
-        anonymity: true,
-        approvalCount: 0,
-        bookId: {},
-        content: '说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对',
-        replies: [
-          {
-            replyContent: "说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对",
-            userId: {},
-          },
-          {
-            replyContent: "说那是球",
-            userId: {},
-          }
-        ],
-        unApprovalCount: 0,
-        userId: {}
-      },
-      {
-        _id: {},
-        anonymity: true,
-        approvalCount: 0,
-        bookId: {},
-        content: '说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对',
-        replies: [
-          {
-            replyContent: "说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对说的对",
-            userId: {}
-          },
-          {
-            replyContent: "说那是球",
-            userId: {}
-          }
-        ],
-        unApprovalCount: 0,
-        userId: {}
-      },
-    ],
+    comments: [],
   },
   onLoad: function() {
-    console.log(app.globalData.userInfo.avatarUrl)
-    // "_id": {},
-    // "anonymity": true,
-    // "approvalCount": 0,
-    // "bookId": {},
-    // "content": "string",
-    // "replies": [
-    //   {
-    //     "replyContent": "string",
-    //     "userId": {}
-    //   }
-    // ],
-    // "unApprovalCount": 0,
-    // "userId": {}
-
     request('v1/comments','GET',{
-      offset: 0,
-      limit: 20
+      offset: this.data.offset,
+      limit: this.data.limit
     },(res) => {
-      console.log(res);
       this.setData({
-        // comments: res.data
-      })
+        user: app.globalData.user,
+        comments: res.data,
+        scroll: res.data.length - 1
+      },this.pageScrollToBottom)
     })
   },
   handleSpeak: function (e) {
@@ -77,7 +28,13 @@ Page({
       words: e.detail.value
     })
   },
+  pageScrollToBottom: function() {
+    this.setData({
+      scroll: this.data.comments.length * 10000
+    })
+  },
   handleTouch: function(e) {
+    console.log(e)
     this.setData({
       touched: !this.data.touched,
       currentCommentIndex: e.currentTarget.id
@@ -87,27 +44,32 @@ Page({
     if (this.data.touched) {
       request('v1/comments/' + this.data.comments[this.data.currentCommentIndex]._id + '/replies',
               'POST',{
-                userId: app.globalData.user._id,
+                userId: app.globalData._id||app.globalData.user._id,
                 replyContent: this.data.words
               },(res) => {
                 console.log(res);
+                this.setData({
+                  words: ''
+                })
+                this.onLoad()          
               })
-      this.setData({
-        words: ''
-      })
       return;
     }
     if(this.data.words) {
       request('v1/comments', 'POST', {
-        userId: app.globalData.user._id,
+        userId: app.globalData._id||app.globalData.user._id,
         content: this.data.words,
         anonymity: false,
-        bookId: '1'
+        bookId: '5cac6970f8f68c000140b465'
       },(res) => {
         console.log(res);
-      })
-      this.setData({
-        words: ''
+        if(res.statusCode === 200) {
+
+        }
+        this.setData({
+          words: ''
+        })
+        this.onLoad()
       })
     }
   },
