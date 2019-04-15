@@ -7,10 +7,10 @@
   <view class="borrows">
     <view wx:for="{{borrows}}" wx:key="{{index}}" class="book">
       <image src="./assets/book.svg" />
-      <text>{{borrows.bookId}}</text>
+      <text>{{item.bookName}}</text>
       <view class="timeline">
-        <text>借出时间:{{item.borrowTime}}</text>
-        <text>归还时间:{{item.lendTime}}</text>
+        <text hidden="{{!item.borrowTime}}">借出时间:{{item.borrowTime}}</text>
+        <text hidden="{{!item.lendTime}}">归还时间:{{item.lendTime}}</text>
       </view>
     </view>
   </view>

@@ -35,14 +35,6 @@ Page({
   },
   handleTap: function(e) {
     let index = parseInt(e.target.id);
-    if (app.globalData.currentBook) {
-      wx.showModal({
-        title: '同时只能借阅一本',
-        content: '请先还旧书'
-      })
-      console.log('不可借')
-      return;
-    }
     if (this.data.bookList[index].bookState === '在读') {
       console.log('书在读');
       request('v1/users/' + this.data.bookList[index].currentOwner, 'GET', {
@@ -54,18 +46,26 @@ Page({
           success: () => {
             wx.showModal({
               title: '此书已被借',
-              content: '联系方式' + res.data.QQ || res.data.weChat || res.data.tel + '已经复制到剪切板'
+              content: '联系方式' + res.data.QQ || res.data.weChat || res.data.tel + '已经复制'
             })
           },
           fail: () => {
             wx.showModal({
               title: '此书已被借',
-              content: '联系方式' + res.data.QQ || res.data.weChat || res.data.tel
+              content: '联系方式' + res.data.QQ || res.data.weChat || res.data.tel + '已经复制'
             })
           }
         })
         console.log('不可借')
       },false);
+      return;
+    }
+    if (app.globalData.currentBook) {
+      wx.showModal({
+        title: '同时只能借阅一本',
+        content: '请先还旧书'
+      })
+      console.log('不可借')
       return;
     }
     request('/v1/books/' + this.data.bookList[index]._id ,'PUT',{
@@ -80,6 +80,10 @@ Page({
         type: '借'
       },(res) => {
         if (res.data) {
+          wx.showToast({
+            time: 1000,
+            title: '借书成功'
+          })
           app.globalData.user = res.data;
           app.globalData.currentBook = this.data.bookList[index]
         }

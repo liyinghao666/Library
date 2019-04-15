@@ -55,6 +55,7 @@
 .history .borrows .book > text {
   max-width: 6rem;
   line-break: normal;
+  margin-right: 30rpx;
 }
 .history .borrows .book .timeline {
   display: flex;

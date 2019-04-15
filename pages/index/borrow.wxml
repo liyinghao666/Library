@@ -9,7 +9,7 @@
       <image class="bookImg" src="./assets/book.svg"/>
       <view class="intro">
         <text class="name">{{item.bookName}}</text>
-        <text class="user">持有人:{{item.bookState}}</text>
+        <text class="user">状态:{{item.bookState}}</text>
       </view>
       <button id="{{index}}" bindtap="handleTap" class="{{item.bookState === '空闲'?'allow':'ban'}}">{{item.bookState === '空闲'?'我要借':'预约'}}</button>
     </view>

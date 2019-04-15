@@ -17,26 +17,34 @@ Page({
     })
   },
   back: function() {
-    request('v1/books/'+ app.globalData.currentBook._id,'PUT',{
-      id: this.data.borrows._id,
-      currentOwner: '000000000000000000000000',
-      bookState: '空闲'
-    }, (res) => {
-      if(res.statusCode !== 200){return}
-      request('v1/users/'+app.globalData.user._id,'PUT',{
-        id: app.globalData.user._id,
-        bookId: this.data.borrows._id,
-        type: '还'
-      },(res) => {
-        app.globalData.currentBook = null;
-        console.log(res)
-        wx.showToast({
-          title: '还书成功'
-        })
-        app.globalData.user = res.data;
-        this.onLoad();
-      })
-    },true)
+    wx.showModal({
+      title: '⚠',
+      content: '请确认书已经转交借阅者或管理员',
+      success: (res) => {
+        if (res.confirm) {
+          request('v1/books/'+ app.globalData.currentBook._id,'PUT',{
+            id: this.data.borrows._id,
+            currentOwner: '000000000000000000000000',
+            bookState: '空闲'
+          }, (res) => {
+            if(res.statusCode !== 200){return}
+            request('v1/users/'+app.globalData.user._id,'PUT',{
+              id: app.globalData.user._id,
+              bookId: this.data.borrows._id,
+              type: '还'
+            },(res) => {
+              app.globalData.currentBook = null;
+              console.log(res)
+              wx.showToast({
+                title: '还书成功'
+              })
+              app.globalData.user = res.data;
+              this.onLoad();
+            })
+          },true)
+        }
+      }
+    })
   },
   // 函数们
   toBorrow: function() {

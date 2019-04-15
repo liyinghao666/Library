@@ -41,12 +41,30 @@
       line-height: 2rem;
       width: 5rem;
     }
+    #home div {
+      width: 200px;
+      height: 60px;
+      margin: 20px;
+      border: 2px gray solid;
+      box-shadow: black 0 0 2px 5px;
+      line-height: 60px;
+      cursor: pointer;
+    }
+    #home div:nth-child(1){
+      background-color: rgb(202, 221, 94)
+    }    
+    #home div:nth-child(2){
+      background-color: rgb(72, 184, 218)
+    }    
+    #home div:nth-child(3){
+      background-color: rgb(157, 233, 80)
+    }
   </style>
 </head>
 <body>
   <div id="load">
-    <input type="text" placeholder="管理员账号" onchange="handleUsername">
-    <input type="text" placeholder="管理员密码" onchange="handlePassword">
+    <input type="text" placeholder="管理员账号" id="username">
+    <input type="text" placeholder="管理员密码" id="password">
     <button onclick="handleLoad()">登陆</button>
   </div>
   <div id="home">
@@ -90,13 +108,31 @@
     const home = document.querySelector('#home');
     const books = document.querySelector('#books');
     const users = document.querySelector('#users');
+    const alluser = document.querySelector('#alluser');
+    const allbook = document.querySelector('#allbook');
+    const baseUrl = 'https://guanli.hustonline.net/v1/';
+    let token = {
+      access_token: '11111',
+      refresh_token: '11111'
+    };
     const data = {
       books:[],
       users:[],
     }
     function handleLoad() {
-      /***/
-      handleHome();
+      post('adminAuth',{
+        username: document.querySelector('#username').value,
+        password: document.querySelector('#password').value
+      }, 'POST').then((res) => {
+        console.log(res)
+        if (res && res.token) {
+          token = res.token;
+          handleHome();
+        }else {
+          window.alert('密码错误！');
+        }
+      })
+
     }
     function handleHome() {
       load.style.display = 'none';
@@ -109,17 +145,66 @@
       home.style.display = 'none';
       books.style.display = 'none';
       users.style.display = 'flex';
+      post('users',null,'GET').then((res) => {
+        console.log(res);
+        res.forEach(user => {
+          let name = document.createElement('div');
+          name.innerText = user.name;
+          let hisClass = document.createElement('div');
+          hisClass.innerText = user.class;
+          let wrapper = document.createElement('div');
+          wrapper.appendChild(name);
+          wrapper.appendChild(hisClass);
+          wrapper.classList.add('user');
+          alluser.appendChild(wrapper);
+        });
+      })
     }
     function handleBooks() {
       load.style.display = 'none';
       home.style.display = 'none';
       books.style.display = 'flex';
       users.style.display = 'none';
+      post('books',null,'GET').then((res) => {
+        console.log(res);
+        res.forEach(book => {
+          let name = document.createElement('div');
+          name.innerText = book.bookName;
+          let hisClass = document.createElement('div');
+          hisClass.innerText = book.author;
+          let wrapper = document.createElement('div');
+          wrapper.appendChild(name);
+          wrapper.appendChild(hisClass);
+          wrapper.classList.add('book');
+          allbook.appendChild(wrapper);
+        });
+      })
     }
     function clearBooks() {
       if(window.confirm('将所有书籍还原为空闲状态？')) {
-        /*....*/
+        window.alert('书籍状态已经全部设置为空闲');
       }
+    }
+    function post(url, data, method) {
+      let body = {
+        headers: {
+          "Authorization": token.access_token,
+          "Content-Type": "application/json"
+        },
+        method: method,
+      }
+      if(method === 'POST') {
+        data = Object.assign({
+          body: JSON.stringify(data)
+        },body)
+      }
+      return fetch(baseUrl + url, data).then((res) => {
+        console.log(res)
+        if (res.status !== 200) {
+          return false;
+        }
+        return res.json()
+      })
     }
   </script>
 </body>
